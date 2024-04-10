@@ -2,27 +2,50 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Product extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+
+
+     public $timestamps=false;
+
     protected $fillable = [
-        'user_id',
+        'product_id',
         'name',
-        'email',
-        'password',
+        'price',
+        'type',
+        'category',
+        'author',
+        'num_of_downloads',
+        'full_product',
+        'free_version',
+        'imageUrl',
+        
+
     ];
+
+
+    // const TYPE_VIDEO = 'video';
+    // const TYPE_PDF = 'pdf';
+    // const TYPE_IMAGE = 'image';
+    
+    // public function addImage($image){
+
+    //      $path=$image->store('image/product');
+    //     $this->update(['path_to_the_image'=>$path]);
+   
+    // }
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -30,8 +53,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        
     ];
 
     /**
@@ -40,8 +62,7 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        
     ];
 
     public function order(){
